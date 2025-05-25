@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import Client from '../views/Client.vue'
 import EditarCliente from '../components/clients/EditarClient.vue'
 import NewClient from '../components/clients/NewClient.vue'
+import Usuario from '@/views/Usuario.vue'
+import EditarUsuario from '@/components/ususarios/EditarUsuario.vue'
 
 
 const routes = [
@@ -26,7 +28,16 @@ const routes = [
   name: 'NewClient',
   component: NewClient
 },
-
+{
+  path: '/Usuario',
+  name: 'Usuario',
+  component: Usuario
+},
+{
+    path: '/EditarUsuario/:id',
+    name: 'EditarUsuario',
+    component: EditarUsuario,
+  },
   {
     path: '/about',
     name: 'about',
