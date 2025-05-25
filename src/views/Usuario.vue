@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     newUser() {
-      this.$router.push({ name: "NewUser" });
+      this.$router.push({ name: "NewUsuario" });
     },
     editUser(id) {
       this.$router.push({ name: "EditarUsuario", params: { id: `${id}` } });

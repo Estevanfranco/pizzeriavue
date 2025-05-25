@@ -5,6 +5,7 @@ import EditarCliente from '../components/clients/EditarClient.vue'
 import NewClient from '../components/clients/NewClient.vue'
 import Usuario from '@/views/Usuario.vue'
 import EditarUsuario from '@/components/ususarios/EditarUsuario.vue'
+import NewUsuario from '@/components/ususarios/NewUsuario.vue'
 
 
 const routes = [
@@ -38,6 +39,11 @@ const routes = [
     name: 'EditarUsuario',
     component: EditarUsuario,
   },
+  {
+  path: '/NewUsuario',
+  name: 'NewUsuario',
+  component: NewUsuario
+},
   {
     path: '/about',
     name: 'about',
