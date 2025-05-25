@@ -52,7 +52,7 @@ export default {
       this.$router.push({ name: "NewClient" });
     },
     editClient(id) {
-      this.$router.push({ name: 'EditarComuna', params: { id: `${id}` } })
+      this.$router.push({ name: 'EditarCliente', params: { id: `${id}` } })
     },
 
     deleteClient(id) {
