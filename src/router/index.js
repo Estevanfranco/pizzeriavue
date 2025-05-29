@@ -6,12 +6,34 @@ import NewClient from '../components/clients/NewClient.vue'
 import Usuario from '../views/Usuario.vue'
 import EditarUsuario from '../components/ususarios/EditarUsuario.vue'
 import NewUsuario from '../components/ususarios/NewUsuario.vue'
-import LoginView from '../views/LoginView.vue' // Asegúrate de crear este archivo
-import authService from '@/services/authService' // Asegúrate de crear este archivo también
+import LoginView from '../views/LoginView.vue'
+import AuthLanding from '../views/AuthLanding.vue'    // ✅ Nueva vista inicial
+
+import authService from '@/services/authService'
+import Register from '@/views/Register.vue'
 
 const routes = [
+  // 👇 Pantalla de bienvenida tipo pizzería
   {
     path: '/',
+    name: 'AuthLanding',
+    component: AuthLanding
+  },
+  // 👇 Login
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginView
+  },
+  // 👇 Registro
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
+  },
+  // 👇 Rutas protegidas
+  {
+    path: '/home',
     name: 'home',
     component: HomeView,
     meta: { requiresAuth: true }
@@ -53,11 +75,6 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: LoginView
-  },
-  {
     path: '/about',
     name: 'about',
     component: () =>
@@ -71,7 +88,7 @@ const router = createRouter({
   routes
 })
 
-// Protección de rutas
+// ✅ Protección de rutas
 router.beforeEach((to, from, next) => {
   const isAuthenticated = authService.isAuthenticated()
 
