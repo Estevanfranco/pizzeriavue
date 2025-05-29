@@ -1,58 +1,102 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div class="home-container">
+    <div class="welcome-card">
+      <img
+        class="pizza-icon"
+        src="https://vectorjungal.com/files/preview/960x960/11721161243fyyregooyx8xnt383dcdprnoozccrmgsvpjszoulhwpkwq5rxgu4fbyntettsrl1ujgnjtrfrzyqi0retegr56svj0f0yw0xegno.png"
+        alt="Pizza Icon"
+      />
+      <h1>¡Bienvenido a <span class="brand">Pizzería Don Código</span>!</h1>
+      <p class="subtitle">El sistema perfecto para administrar tus clientes y usuarios con sabor a código.</p>
+
+      <div class="info-section">
+        <h2>📋 ¿Qué puedes hacer aquí?</h2>
+        <ul>
+          <li>👥 Gestionar clientes y sus pedidos.</li>
+          <li>👨‍💻 Administrar usuarios del sistema.</li>
+          <li>📊 Consultar reportes y estadísticas.</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
+  name: "HomeView",
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: #fffaf2;
+  min-height: 100vh;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.welcome-card {
+  text-align: center;
+  background: #fff;
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  width: 100%;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+.pizza-icon {
+  width: 90px;
+  margin-bottom: 20px;
 }
-a {
-  color: #42b983;
+
+.brand {
+  color: #e74c3c;
+  font-weight: bold;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.info-section {
+  background-color: #fdf0e3;
+  border: 2px dashed #e67e22;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.info-section h2 {
+  margin-bottom: 10px;
+  color: #d35400;
+}
+
+.info-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.info-section li {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.pizza-img-wrapper {
+  margin-top: 20px;
+}
+
+.pizza-image {
+  width: 100%;
+  border-radius: 15px;
+  max-height: 260px;
+  object-fit: cover;
+  border: 3px solid #f39c12;
 }
 </style>

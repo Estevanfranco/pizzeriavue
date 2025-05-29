@@ -2,7 +2,7 @@
   <nav>
     <router-link to="/home">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/client">client</router-link> |
+    <router-link to="/client">Clientes</router-link> |
     <router-link to="/usuario">Usuarios</router-link>|
     <button @click="logout">Cerrar sesión</button>
   </nav>
