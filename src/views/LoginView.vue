@@ -3,17 +3,32 @@
     <div class="form-box">
       <h2>🍕 Inicia sesión PizzaRomo</h2>
       <form @submit.prevent="login">
-        <input type="email" v-model="email" placeholder="Correo electrónico" required />
-        <input type="password" v-model="password" placeholder="Contraseña secreta" required />
+        <input
+          type="email"
+          v-model="email"
+          placeholder="Correo electrónico"
+          required
+        />
+        <input
+          type="password"
+          v-model="password"
+          placeholder="Contraseña secreta"
+          required
+        />
         <button type="submit">Entrar a la cocina 🔥</button>
       </form>
+
+      <!-- 🔽 Botón para ir al registro -->
+      <button class="register-btn" @click="goToRegister">
+        ¿No tienes cuenta? Regístrate 📝
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import Swal from 'sweetalert2';
-import authService from '@/services/authService';
+import Swal from 'sweetalert2'
+import authService from '@/services/authService'
 
 export default {
   name: 'LoginView',
@@ -21,33 +36,58 @@ export default {
     return {
       email: '',
       password: ''
-    };
+    }
   },
   methods: {
     async login() {
       try {
-        await authService.login(this.email, this.password);
+        await authService.login(this.email, this.password)
 
         Swal.fire({
           title: '¡Bienvenido a Don Pepito!',
           text: 'Ya puedes pedir tu pizza favorita.',
           icon: 'success',
           confirmButtonText: '¡A pedir!'
-        });
+        })
 
-        this.$router.push({ name: 'home' });
+        this.$router.push({ name: 'home' })
       } catch (error) {
         Swal.fire({
           title: 'Error',
           text: 'Credenciales incorrectas o no registradas.',
           icon: 'error',
           confirmButtonText: 'Intentar de nuevo'
-        });
+        })
       }
+    },
+    goToRegister() {
+      this.$router.push({ name: 'Register' }) // Asegúrate de que esta ruta exista
     }
   }
-};
+}
 </script>
+
+<style scoped>
+/* ... estilos existentes ... */
+
+.register-btn {
+  margin-top: 20px;
+  background-color: transparent;
+  color: #e63946;
+  border: 2px solid #e63946;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+  background-color: #e63946;
+  color: white;
+}
+</style>
+
 
 <style scoped>
 .registro-container {
