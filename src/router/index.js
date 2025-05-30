@@ -11,8 +11,29 @@ import AuthLanding from '../views/AuthLanding.vue'    // ✅ Nueva vista inicial
 
 import authService from '@/services/authService'
 import Register from '@/views/Register.vue'
+import PizzaSize from '@/views/PizzaSize.vue'
+import EditarPizzaSize from '@/components/PizzaSize/EditarPizzaSize.vue'
+import NewPizzaSize from '@/components/PizzaSize/NewPizzaSize.vue'
 
 const routes = [
+   {
+    path: '/PizzaSize',
+    name: 'PizzaSize',
+    component: PizzaSize,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/EditarPizzaSize/:id',
+    name: 'EditarPizzaSize',
+    component: EditarPizzaSize,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/NewPizzaSize',
+    name: 'NewPizzaSize',
+    component: NewPizzaSize,
+    meta: { requiresAuth: true }
+  },
   // 👇 Pantalla de bienvenida tipo pizzería
   {
     path: '/',

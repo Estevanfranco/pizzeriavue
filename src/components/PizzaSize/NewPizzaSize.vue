@@ -6,23 +6,18 @@
       <div class="card-body">
         <form @submit.prevent="savePizzaSize">
           <div class="row mb-3">
-            <label for="pizzas_id" class="form-label">ID de Pizza:</label>
-            <input
-              type="number"
-              class="form-control"
-              id="pizzas_id"
-              v-model="pizzaSize.pizzas_id"
-            />
-          </div>
-
-          <div class="row mb-3">
             <label for="size" class="form-label">Tamaño:</label>
-            <input
-              type="text"
-              class="form-control"
+            <select
               id="size"
+              class="form-select"
               v-model="pizzaSize.size"
-            />
+              required
+            >
+              <option disabled value="">Seleccione un tamaño</option>
+              <option value="pequeña">Pequeña</option>
+              <option value="mediana">Mediana</option>
+              <option value="grande">Grande</option>
+            </select>
           </div>
 
           <div class="row mb-3">
@@ -33,6 +28,8 @@
               class="form-control"
               id="price"
               v-model="pizzaSize.price"
+              required
+              min="0"
             />
           </div>
 
@@ -55,7 +52,6 @@ export default {
   data() {
     return {
       pizzaSize: {
-        pizzas_id: "",
         size: "",
         price: "",
       },
@@ -67,8 +63,16 @@ export default {
     },
     async savePizzaSize() {
       try {
-        const res = await axios.post("http://127.0.0.1:8000/api/pizza-sizes", this.pizzaSize);
-        this.$router.push({ name: "PizzaSizes" });
+        // Solo enviar size y price, no id
+        const payload = {
+          size: this.pizzaSize.size,
+          price: Number(this.pizzaSize.price),
+        };
+
+        await axios.post("http://127.0.0.1:8000/api/pizza-sizes", payload);
+
+        this.$router.push({ name: "PizzaSize" });
+
         Swal.fire({
           icon: "success",
           title: "Tamaño guardado correctamente",
@@ -78,10 +82,15 @@ export default {
         });
       } catch (error) {
         console.error(error);
+        let message = "Hubo un error al guardar.";
+        if (error.response?.data?.errors) {
+          const errors = error.response.data.errors;
+          message = Object.values(errors).flat().join("\n");
+        }
         Swal.fire({
           icon: "error",
           title: "Error",
-          text: "Hubo un problema al guardar el tamaño de pizza.",
+          text: message,
         });
       }
     },

@@ -4,6 +4,7 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/client">Clientes</router-link> |
     <router-link to="/usuario">Usuarios</router-link>|
+    <router-link to="/PizzaSize">Tamaño Pizza</router-link>|
     <button @click="logout">Cerrar sesión</button>
   </nav>
   <router-view/>

@@ -11,7 +11,7 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>Pizza</th>
+          <th>Pizza ID</th>
           <th>Tamaño</th>
           <th>Precio</th>
           <th>Acciones</th>
@@ -20,7 +20,7 @@
       <tbody>
         <tr v-for="(size, index) in pizzaSizes" :key="size.id">
           <th scope="row">{{ index + 1 }}</th>
-          <td>{{ size.pizza?.name ?? 'N/A' }}</td>
+          <td>{{ size.id ?? 'N/A' }}</td>
           <td>{{ size.size }}</td>
           <td>{{ size.price }}</td>
           <td>
@@ -42,7 +42,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 export default {
-  name: "PizzaSizes",
+  name: "PizzaSize",
   data() {
     return {
       pizzaSizes: [],
@@ -53,7 +53,7 @@ export default {
       this.$router.push({ name: "NewPizzaSize" });
     },
     editPizzaSize(id) {
-      this.$router.push({ name: "EditPizzaSize", params: { id } });
+      this.$router.push({ name: "EditarPizzaSize", params: { id } });
     },
     deletePizzaSize(id) {
       Swal.fire({
